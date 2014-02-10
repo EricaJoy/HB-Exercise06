@@ -31,16 +31,26 @@ for word in wordlist:
         wordcount[word] += 1
     else:
         wordcount[word] = 1
+# Count the frequency of the words and if the frequency exists, put the word
+# into a list of words
 
-# Create a list called stuff comprised of (value, key) from wordcount
-stuff = zip(wordcount.values(), wordcount.keys())
+frequency = {}
+for key, value in wordcount.iteritems():
+    if frequency.get(value):
+        frequency[value].append(key)
+    else:
+        frequency[value] = [key]
 
-# Sort the stuff list
+# Sort the words in each value
+
+for key, value in frequency.iteritems():
+    frequency[key].sort()
+
+# Make a list of the dict, sort it, reverse it
+stuff = frequency.items()
 stuff.sort()
-
-# Reverse the stuff list
 stuff.reverse()
 
-# Print the value, key in the stuff list
+# Print the key and value of stuff
 for key, value in stuff:
-    print value, key
+    print key, value
