@@ -4,8 +4,10 @@
 # Count each occurence of each word in the dictionary
 #  by creating a key for each word, then incrementing the value
 # If word isn't in the dictionary, add into
+import sys
 
-inputfile = open('inputfile.txt')
+thefile = sys.argv[1] 
+inputfile = open(thefile)
 inputlist = []
 
 for line in inputfile:
