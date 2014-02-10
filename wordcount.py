@@ -5,12 +5,29 @@
 #  by creating a key for each word, then incrementing the value
 # If word isn't in the dictionary, add into
 
+# inputfile = open('inputfile.txt')
 
-inputfile = """As I was going to St. Ives I met a man with seven wives Every wife had seven sacks Every sack had seven cats Every cat had seven kits Kits, cats, sacks, wives. How many were going to St. Ives?"""
+inputfile = """As I was going to St. Ives
+I met a man with seven wives
+Every wife had seven sacks
+Every sack had seven cats
+Every cat had seven kits
+Kits, cats, sacks, wives.
+How many were going to St. Ives?"""
 
-inputlist = inputfile.split(' ')
+
+# Puts each line into a list "lines"
+lines = inputfile.split('\n')
+
+# Splits each line and extends list "inputlist"
+inputlist = []
+for line in lines:
+    inputlist.extend(line.split(' ')) 
+
+# Counts the words!
 wordcount = {}
 for word in inputlist:
+    word = word.strip()
     if wordcount.get(word):
         wordcount[word] += 1
     else:
