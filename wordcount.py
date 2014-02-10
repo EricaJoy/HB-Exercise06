@@ -31,5 +31,16 @@ for word in wordlist:
         wordcount[word] += 1
     else:
         wordcount[word] = 1
-for key, value in wordcount.iteritems():
-    print key, value
+
+# Create a list called stuff comprised of (value, key) from wordcount
+stuff = zip(wordcount.values(), wordcount.keys())
+
+# Sort the stuff list
+stuff.sort()
+
+# Reverse the stuff list
+stuff.reverse()
+
+# Print the value, key in the stuff list
+for key, value in stuff:
+    print value, key
