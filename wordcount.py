@@ -6,17 +6,27 @@
 # If word isn't in the dictionary, add into
 import sys
 
+# Get the file path from command line
 thefile = sys.argv[1] 
-inputfile = open(thefile)
-inputlist = []
 
-for line in inputfile:
-    inputlist.extend(line.split(' ')) 
+# Open the file and read to var inputfile
+f = open(thefile)
+inputfile = f.read()
+
+# split the text from inputfile into list inputlist
+inputlist = inputfile.split()
+
+# instantiate the wordlist list
+wordlist = []
+
+# split the values in inputlist on -- and store to list wordlist 
+for line in inputlist:
+    wordlist.extend(line.split('--')) 
 
 # Counts the words!
 wordcount = {}
-for word in inputlist:
-    word = word.strip()
+for word in wordlist:
+    word = word.strip('_-:;.,?!" ').lower()
     if wordcount.get(word):
         wordcount[word] += 1
     else:
