@@ -26,31 +26,27 @@ for line in inputlist:
 # Counts the words!
 wordcount = {}
 for word in wordlist:
-    word = word.strip('_-:;.,?!" ').lower()
+    word = word.strip('_-:;.,?!\'()" ').lower()
     if wordcount.get(word):
         wordcount[word] += 1
     else:
         wordcount[word] = 1
-# Count the frequency of the words and if the frequency exists, put the word
-# into a list of words
 
-frequency = {}
-for key, value in wordcount.iteritems():
-    if frequency.get(value):
-        frequency[value].append(key)
-    else:
-        frequency[value] = [key]
+# Turn the wordcount dictionary into a list of tuples called countlist
+countlist = wordcount.items()
 
-# Sort the words in each value
+# Sort the list of tuples by alpha
+countlist.sort()
 
-for key, value in frequency.iteritems():
-    frequency[key].sort()
+# Create reversed_list, swap the positions of key, value in countlist
+reversed_list = []
+for word, frequency in countlist:
+    reversed_list.append((frequency, word))
 
-# Make a list of the dict, sort it, reverse it
-stuff = frequency.items()
-stuff.sort()
-stuff.reverse()
+# Sort the list by frequency and reverse it
+reversed_list.sort()
+reversed_list.reverse()
 
-# Print the key and value of stuff
-for key, value in stuff:
-    print key, value
+# Make things spew on the screen
+for frequency, word in reversed_list:
+    print word, frequency
